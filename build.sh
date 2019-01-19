@@ -5,7 +5,6 @@
 DERIVED_DATA=${1:-/tmp/LayoutKit}
 echo "Derived data location: $DERIVED_DATA";
 
-
 set -o pipefail &&
 
 echo "Run tests on iOS..." &&
@@ -15,13 +14,12 @@ time xcodebuild clean test \
     -scheme LayoutKit-iOS \
     -sdk iphonesimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone X,OS=12.0' \
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.1' \
-    -destination 'platform=iOS Simulator,name=iPhone 6 Plus,OS=12.0' \
-    -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.0' \
+    -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1' \
+    -destination 'platform=iOS Simulator,name=iPhone 6 Plus,OS=10.3.1' \
+    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
     -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=11.3' \
-    OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     -disable-concurrent-destination-testing test-without-building \
+    OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee build.log \
     | xcpretty &&
 cat build.log | sh debug-time-function-bodies.sh &&
@@ -30,9 +28,8 @@ echo "Run tests on macOS..." &&
 time xcodebuild clean test \
     -project LayoutKit.xcodeproj \
     -scheme LayoutKit-macOS \
-    -sdk macosx10.13 \
+    -sdk macosx10.14 \
     -derivedDataPath $DERIVED_DATA \
-    -disable-concurrent-destination-testing \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee build.log \
     | xcpretty &&
@@ -59,10 +56,9 @@ time xcodebuild clean build \
     -scheme LayoutKitSampleApp \
     -sdk iphonesimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone X,OS=12.0' \
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.1' \
-    -destination 'platform=iOS Simulator,name=iPhone 6 Plus,OS=12.0' \
-    -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.0' \
+    -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1' \
+    -destination 'platform=iOS Simulator,name=iPhone 6 Plus,OS=10.3.1' \
+    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
     -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=11.3' \
     -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
@@ -81,7 +77,7 @@ time xcodebuild clean build \
     -scheme LayoutKit-iOS \
     -sdk iphonesimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.0' \
+    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
     -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
@@ -96,9 +92,8 @@ pod install &&
 time xcodebuild clean build \
     -workspace LayoutKit-macOS.xcworkspace \
     -scheme LayoutKit-macOS \
-    -sdk macosx10.13 \
+    -sdk macosx10.14 \
     -derivedDataPath $DERIVED_DATA \
-    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
     | xcpretty &&
