@@ -21,7 +21,7 @@ time xcodebuild clean test \
     -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.0' \
     -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=11.3' \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
-    -disable-concurrent-destination-testing \
+    -disable-concurrent-destination-testing test-without-building \
     | tee build.log \
     | xcpretty &&
 cat build.log | sh debug-time-function-bodies.sh &&
@@ -46,7 +46,7 @@ time xcodebuild clean test \
     -sdk appletvsimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
     -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=11.0' \
-    -disable-concurrent-destination-testing \
+    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee build.log \
     | xcpretty &&
@@ -64,7 +64,7 @@ time xcodebuild clean build \
     -destination 'platform=iOS Simulator,name=iPhone 6 Plus,OS=12.0' \
     -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.0' \
     -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=11.3' \
-    -disable-concurrent-destination-testing \
+    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../build.log \
     | xcpretty &&
@@ -82,7 +82,7 @@ time xcodebuild clean build \
     -sdk iphonesimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
     -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.0' \
-    -disable-concurrent-destination-testing \
+    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
     | xcpretty &&
@@ -98,7 +98,7 @@ time xcodebuild clean build \
     -scheme LayoutKit-macOS \
     -sdk macosx10.13 \
     -derivedDataPath $DERIVED_DATA \
-    -disable-concurrent-destination-testing \
+    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
     | xcpretty &&
@@ -115,7 +115,7 @@ time xcodebuild clean build \
     -sdk appletvsimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
     -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=11.0' \
-    -disable-concurrent-destination-testing \
+    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
     | xcpretty &&
