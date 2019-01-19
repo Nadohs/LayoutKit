@@ -29,7 +29,7 @@ echo "Run tests on macOS..." &&
 time xcodebuild clean test \
     -project LayoutKit.xcodeproj \
     -scheme LayoutKit-macOS \
-    -sdk macosx10.14 \
+    -sdk macosx10.13 \
     -derivedDataPath $DERIVED_DATA \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee build.log \
@@ -91,7 +91,7 @@ pod install &&
 time xcodebuild clean build \
     -workspace LayoutKit-macOS.xcworkspace \
     -scheme LayoutKit-macOS \
-    -sdk macosx10.14 \
+    -sdk macosx10.13 \
     -derivedDataPath $DERIVED_DATA \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
