@@ -42,7 +42,7 @@ time xcodebuild clean test \
     -scheme LayoutKit-tvOS \
     -sdk appletvsimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=11.0' \
+    -destination 'platform=tvOS Simulator,name=Apple TV 4K (at 1080p),OS=11.0' \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee build.log \
     | xcpretty &&
@@ -107,7 +107,7 @@ time xcodebuild clean build \
     -scheme LayoutKit-tvOS \
     -sdk appletvsimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=11.0' \
+    -destination 'platform=tvOS Simulator,name=Apple TV 4K (at 1080p),OS=11.0' \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
     | xcpretty &&
