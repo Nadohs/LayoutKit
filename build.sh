@@ -59,7 +59,7 @@ time xcodebuild clean build \
     -destination 'platform=iOS Simulator,name=iPhone 6 Plus,OS=10.3.1' \
     -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
     -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=11.3' \
-    -disable-concurrent-destination-testing test-without-building \
+    -disable-concurrent-destination-testing \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../build.log \
     | xcpretty &&
