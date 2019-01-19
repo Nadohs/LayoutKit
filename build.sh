@@ -43,7 +43,6 @@ time xcodebuild clean test \
     -sdk appletvsimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
     -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=11.0' \
-    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee build.log \
     | xcpretty &&
@@ -78,7 +77,6 @@ time xcodebuild clean build \
     -sdk iphonesimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
     -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
-    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
     | xcpretty &&
@@ -110,7 +108,6 @@ time xcodebuild clean build \
     -sdk appletvsimulator12.0 \
     -derivedDataPath $DERIVED_DATA \
     -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=11.0' \
-    -disable-concurrent-destination-testing test-without-building \
     OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies' \
     | tee ../../../build.log \
     | xcpretty &&
